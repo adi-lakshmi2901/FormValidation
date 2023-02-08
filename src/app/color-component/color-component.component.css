@@ -1,0 +1,15 @@
+.common-component{
+    
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    
+}
+#alert{
+    color: red;
+    font-size: 16px;
+}
+input{
+    margin-right: 100px;
+    margin-left: 20px;
+}

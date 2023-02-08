@@ -1,0 +1,95 @@
+<div id="main-container">
+  <!--  heading-->
+  <h1>Register User</h1><br/>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <table cellspacing="15px">
+      <!-- first name -->
+      <tr>
+    <td><label>First Name:</label></td>
+    <td><input type="text" formControlName="firstName" placeholder="Enter FirstName"/><div class="alert" *ngIf="form.get('firstName').invalid && form.get('firstName').touched">First Name is Invalid</div></td>
+      </tr>
+      <!-- last name  -->
+      <tr>
+    <td><label>Last Name:</label></td>
+    <td><input type="text" formControlName="lastName" placeholder="Enter LastName"/><div class="alert" *ngIf="form.get('lastName').invalid && form.get('lastName').touched">Last Name is Invalid</div></td>
+    </tr>
+    <!-- username -->
+    <tr>
+      <td><label>Username:</label></td>
+      <td><input type="text" formControlName="username" placeholder="Enter Username"/><div class="alert" *ngIf="form.get('username').invalid && form.get('username').touched">Username is Invalid</div></td>
+      </tr>
+      <!-- age -->
+    <tr>
+    <td><label>Age:</label></td>
+    <td><input type="number" formControlName="age" placeholder="Enter Age"/><div class="alert" *ngIf=" form.get('age').invalid && form.get('age').touched ">Age is Invalid</div></td>
+    </tr>
+    <!-- email -->
+    <tr>
+    <td><label>Email:</label></td>
+    <td><input type="email" formControlName="mail" placeholder="Enter EmailID"/><div class="alert" *ngIf="form.get('mail').invalid && form.get('mail').touched">Email is Invalid</div></td>
+    </tr>
+    <!-- phone number -->
+    <tr>
+    <td><label>Phone No:</label></td>
+    <td><input type="text" formControlName="phone" placeholder="Enter Phone Number"/><div class="alert" *ngIf="form.get('phone').invalid && form.get('phone').touched">Phone Number is Invalid</div></td>
+    </tr>
+    <!-- additional information -->
+    <tr>
+    <td><label>Additional Information:</label></td>
+    <td><input type="text" formControlName="addInfo" placeholder="Additional Information"/></td>
+    </tr>
+    </table><br/>
+    <!-- comonent for additional information input -->
+    <app-color-component (sendStatus)="checkStatus($event)" (sendInfo)="handleInfo($event)"></app-color-component>
+   
+    <br/><br/>
+    <!-- print additional information -->
+    <div class="add-info" *ngIf="showAddInfo">
+      <div>Additional Information: {{add_Info}}</div><br/>
+      <div>Value: {{addInfoValue}}</div>
+    </div>
+    <br/><br/>
+    <!-- buttons for submit and reset  -->
+    <div class="buttons">
+      
+    <button type="reset">Reset</button>
+    <button type="Submit" [disabled]="form.invalid && addInfoStatus">Submit</button>
+    
+    </div>
+    
+    
+  </form>
+  
+</div>
+</div>
+<!-- Showing user details given -->
+<div id="userDetails" *ngIf="showDetails">
+  <h1>User Details</h1><br/>
+    <table cellspacing="25px">
+      <tr>
+        <td><label>First Name:</label></td>
+        <td>{{fnameValue}}</td>
+      </tr>
+      <tr>
+        <td><label>Last Name:</label></td>
+        <td>{{lnameValue}}</td>
+      </tr>
+      <tr>
+        <td><label>Username:</label></td>
+        <td>{{usernameValue}}</td>
+      </tr>
+      <tr>
+        <td><label>Age:</label></td>
+        <td>{{ageValue}}</td>
+      </tr>
+      <tr>
+        <td><label>Email:</label></td>
+        <td>{{mailValue}}</td>
+      </tr>
+      <tr>
+        <td><label>Phone No:</label></td>
+        <td>{{phoneValue}}</td>
+      </tr>
+    </table>
+</div>
