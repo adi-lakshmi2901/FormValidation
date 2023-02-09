@@ -87,11 +87,11 @@
     
     <div class="inputs add-info">
       <label>Additional Information:</label>
-    <input type="text" formControlName="addInfo" placeholder="Additional Information"/>
+    <input type="text" formControlName="addInfo" placeholder="Additional Information" (input)="showAddInfoFun()"/>
     </div>
     <br/>
     <!-- comonent for additional information input -->
-    <app-color-component (sendStatus)="checkStatus($event)" (sendInfo)="handleInfo($event)"></app-color-component>
+    <app-color-component *ngIf="showAddInfoComponent" (sendStatus)="checkStatus($event)" (sendInfo)="handleInfo($event)"></app-color-component>
    
     <br/>
     <!-- print additional information -->
@@ -105,7 +105,7 @@
     <div class="buttons">
       
     <button type="reset">Reset</button>
-    <button type="Submit" [disabled]="form.invalid && addInfoStatus">Submit</button>
+    <button type="Submit" [disabled]="form.invalid && !addInfoStatus">Submit</button>
     
     </div>
     

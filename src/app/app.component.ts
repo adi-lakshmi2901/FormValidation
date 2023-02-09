@@ -13,18 +13,13 @@ export class AppComponent {
   
   namePattern =/^[A-Za-z]+$/;
   numberPattern = /^[0-9]+$/;
-  userNamePattern = /^[a-zA-Z][a-zA-Z0-9_-]{2,14}$/
-  ;
-  // fnameValue:unknown;
-  // lnameValue:unknown;
-  // usernameValue :unknown;
-  // ageValue:unknown;
-  // mailValue:unknown;
-  // phoneValue:unknown;
+  userNamePattern = /^[a-zA-Z][a-zA-Z0-9_-]{2,14}$/;
+  
   add_Info:unknown;
   addInfoValue:unknown;
   addInfoStatus = false;
   showAddInfo=false;
+  showAddInfoComponent=false;
   
     form = new FormGroup({
       firstName : new FormControl("",Validators.compose([Validators.required, Validators.maxLength(256),Validators.minLength(3),Validators.pattern(this.namePattern)])),
@@ -36,7 +31,8 @@ export class AppComponent {
       addInfo : new FormControl("",Validators.compose([Validators.required]))
     });
     constructor(private router : Router){}
-  
+
+  // upon clicking submit navigating to display-data
   onSubmit(){
     console.log(this.form);
     this.submitteddata=this.form.value;
@@ -45,15 +41,22 @@ export class AppComponent {
     })
    
   }
+  // function to show the additional information component if input entered in additional info label 
+  showAddInfoFun(){
+    this.showAddInfoComponent = true;
+  }
+  // checking status if additional information added in form or not
   checkStatus(event:any){
     this.addInfoStatus = event;
     this.showAddInfo = true;
-    console.log("check sttaus func: ",event);
+    
   }
+  // tO get the additional information label from form
+  // to get additional information value from common component
   handleInfo(event:any){
     this.add_Info = this.form.value.addInfo;
     this.addInfoValue = event;
-    console.log("handle info func ",event);
+    
   }
   get Firstname() {
     return this.form.get("firstName") ;
