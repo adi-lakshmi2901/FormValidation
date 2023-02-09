@@ -1,15 +1,27 @@
 .common-component{
     
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 8px;
-    
+    padding: 40px;
+    border: 2px solid black;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
 }
+/* alert msgs */
 #alert{
     color: red;
     font-size: 16px;
 }
+/* input field */
 input{
-    margin-right: 100px;
-    margin-left: 20px;
+    /* margin-right: 100px;
+    margin-left: 20px; */
+    height:35px;
+    width:40%;
+    font-size: 26px;
+}
+/* drop down  */
+select{
+    height: 35px;
+    width:40%;
+    font-size: 26px;
 }
