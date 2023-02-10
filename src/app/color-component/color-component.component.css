@@ -25,3 +25,12 @@ select{
     width:40%;
     font-size: 26px;
 }
+/* add button */
+#add{
+    border: none;
+    border-radius: 50%;
+    background-color:lightgrey;
+    width: 30px;
+    font-size: 20px;
+    height: 30px;
+}

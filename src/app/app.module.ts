@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ColorComponentComponent } from './color-component/color-component.component';
 import { DisplayDataComponent } from './display-data/display-data.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ColorComponentComponent,
-    DisplayDataComponent
+    DisplayDataComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

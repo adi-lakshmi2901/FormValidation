@@ -1,0 +1,121 @@
+<div id="main-container">
+    <!--  heading-->
+    <h1>Register User</h1><br/>
+  
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      
+        <!-- first name -->
+        
+      <div class="inputs">
+        <label>First Name:</label>
+      <input type="text" formControlName="firstName" placeholder="Enter FirstName"/>
+      </div>
+      <!-- showing error for first name -->
+      <div class="alert" *ngIf="Firstname && Firstname.errors?.['required'] && Firstname.touched">
+        Enter Firstname
+      </div>
+      <div class="alert" *ngIf="Firstname && Firstname.errors?.['minlength'] ">
+        Enter atleast 3 characters
+      </div>
+      <div class="alert" *ngIf="Firstname && Firstname.errors?.['maxlength'] ">
+        Atmost 256 characters are allowed only
+      </div>
+        
+        <!-- last name  -->
+        
+      <div class="inputs">
+        <label>Last Name:</label>
+      <input type="text" formControlName="lastName" placeholder="Enter LastName"/>
+      </div>
+  
+      <!-- showing error for last name -->
+      <div class="alert" *ngIf="Lastname && Lastname.errors?.['required'] && Lastname.touched">
+        Enter Lastname
+      </div>
+      <div class="alert" *ngIf="Lastname && Lastname.errors?.['minlength'] ">
+        Enter atleast 3 characters
+      </div>
+      <div class="alert" *ngIf="Lastname && Lastname.errors?.['maxlength']">
+        Atmost 256 characters are allowed only
+      </div>
+      <!-- username -->
+      
+      <div class="inputs">
+        <label>Username:</label>
+        <input type="text" formControlName="username" placeholder="Enter Username"/>
+        </div>
+        <!-- showing error for username -->
+        <div class="alert" *ngIf="UserName && UserName.errors?.['required'] && UserName.touched">
+        Enter username
+      </div>
+      <div class="alert" *ngIf="UserName && UserName.invalid &&UserName.errors?.['pattern'] ">
+        Enter valid username
+      </div>
+        <!-- age -->
+      
+      <div class="inputs">
+        <label>Age:</label>
+      <input type="number" formControlName="age" placeholder="Enter Age"/>
+      </div>
+      <!-- showing error for age -->
+      <div class="alert" *ngIf="Age && Age.errors?.['required'] && Age.touched">
+        Enter Age
+      </div>
+      <div class="alert" *ngIf="Age && Age.errors?.['max']">
+        Enter age below 1000
+      </div>
+      <!-- email -->
+      
+      <div class="inputs">
+        <label>Email:</label>
+      <input type="email" formControlName="mail" placeholder="Enter EmailID"/>
+      </div>
+      <!-- showing error for mail -->
+      <div class="alert" *ngIf="Email && Email.invalid && Email.touched">
+        Enter valid email id
+      </div>
+      <!-- phone number -->
+      
+      <div class="inputs">
+        <label>Phone No:</label>
+      <input type="text" formControlName="phone" placeholder="Enter Phone Number"/>
+      </div>
+  
+      <!-- showing error for phone number -->
+      <div class="alert" *ngIf="Phoneno && Phoneno.invalid && (Phoneno.dirty || Phoneno.touched)">Enter valid phone number</div>
+      <!-- additional information -->
+      
+      <div class="inputs add-info">
+        <label>Additional Information:</label>
+      <input type="text" formControlName="addInfo" placeholder="Additional Information" (input)="showAddInfoFun()"/>
+      </div>
+      <br/>
+      <!-- comonent for additional information input -->
+      <app-color-component *ngIf="showAddInfoComponent" (sendStatus)="checkStatus($event)" (sendInfo)="handleInfo($event)"></app-color-component>
+     
+      <br/>
+      <!-- print additional information -->
+      <div class="add-info" *ngIf="showAddInfo">
+        <div>Additional Information:</div><br/>
+        <div *ngFor="let item of addInfoValue ; let i =index">
+        <!-- <div>Label: {{add_Info[item.key]}}</div> -->
+        <!-- <div>Value: {{item.value}}</div><br/> -->
+        <div>Label :{{add_Info[i]}}</div>
+        <div>Value :{{addInfoValue[i]}}</div><br/>
+    </div>
+        </div>
+     
+      
+      <!-- buttons for submit and reset  -->
+      <div class="buttons">
+        
+      <button type="reset">Reset</button>
+      <button type="Submit" [disabled]="form.invalid && !addInfoStatus">Submit</button>
+      
+      </div>
+      
+    
+    </form>
+    
+  
+  </div>
