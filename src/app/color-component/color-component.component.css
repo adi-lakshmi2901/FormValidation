@@ -1,10 +1,11 @@
 .common-component{
     
-    padding: 40px;
+    padding: 20px;
     border: 2px solid black;
     border-radius: 15px;
     display: flex;
     justify-content: space-around;
+    height: 100%;
 }
 /* alert msgs */
 #alert{
@@ -24,13 +25,6 @@ select{
     height: 35px;
     width:40%;
     font-size: 26px;
+    cursor: pointer;
 }
-/* add button */
-#add{
-    border: none;
-    border-radius: 50%;
-    background-color:lightgrey;
-    width: 30px;
-    font-size: 20px;
-    height: 30px;
-}
+

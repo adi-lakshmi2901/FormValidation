@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "maya",
+      "lastname": "shetty",
+      "username": "maya",
+      "age": 20,
+      "mail": "maya@gmail.com",
+      "phone": "122876543"
+    },
+    {
+      "id": 2,
+      "firstname": "priya",
+      "lastname": "madhav",
+      "username": "priya",
+      "age": 20,
+      "mail": "priya@gmail.com",
+      "phone": "654312287"
+    },
+    {
+      "id": 3,
+      "firstname": "siva",
+      "lastname": "madhav",
+      "username": "siva",
+      "age": 21,
+      "mail": "siva123@gmail.com",
+      "phone": "122543876"
+    },
+    {
+      "id": 4,
+      "firstname": "madhu",
+      "lastname": "karan",
+      "username": "madhu",
+      "age": 21,
+      "mail": "madhu3@gmail.com",
+      "phone": "431228765"
+    },
+    {
+      "id": 5,
+      "firstname": "sruthi",
+      "lastname": "shetty",
+      "username": "sruthishetty",
+      "age": 20,
+      "mail": "sruthi99@gmail.com",
+      "phone": "287612543"
+    },
+    {
+      "firstname": "adi",
+      "lastname": "lakshmi",
+      "username": "myuser",
+      "age": 22,
+      "mail": "adi@gmail.com",
+      "phone": "6353666622",
+      "addInfo": "",
+      "id": 6
+    }
+  ]
+}

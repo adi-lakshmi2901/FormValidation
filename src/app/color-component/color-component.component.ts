@@ -8,11 +8,11 @@ import { Output } from '@angular/core';
   styleUrls: ['./color-component.component.css']
 })
 export class ColorComponentComponent {
-  @Output() sendInfo = new EventEmitter<object>();
+  @Output() sendInfo = new EventEmitter<any>();
   @Output() sendStatus = new EventEmitter<any>();
-  addInfoArr :object[]=[];
+  labelArr:Array<string>=[];
   showError = false;
-  addInfo =true;
+  
   form:any;
   ngOnInit(){
     this.form = new FormGroup({
@@ -27,7 +27,7 @@ export class ColorComponentComponent {
     return /^\d+$/.test(str);
   }
   isHexa(str: string){
-    return /^[0-9A-Fa-f]+$/.test(str);
+    return /^[0-9A-Fa-f]{6}$/.test(str);
   }
   isBin(str:string){
     return /^[01]+$/.test(str);
@@ -37,25 +37,29 @@ export class ColorComponentComponent {
   }
   updateInfoValue(){
     let value = this.form.value.addInfo;
-    this.addInfoArr.push(value);
+    this.labelArr.push(this.form.value.addInfo);
+    
     // console.log(this.addInfoArr);
     let option = this.form.value.dropDown;
     if(!this.form.invalid)
     {
       if((this.isString(value) && option=="string") || (this.isBin(value) && option=="binary") || (this.isBoolean(value) && option=="boolean") || (this.isNumber(value) && option=="number") || (this.isHexa(value) && option=="Hexa Decimal"))
       {
-        this.sendInfo.emit(this.addInfoArr);
+        this.sendInfo.emit(this.labelArr);
         this.showError = false;
+        this.sendStatus.emit(true);
+        // console.log("done!!!");
       }
       else{
         // console.log(value,"   ",option);
         this.showError = true;
+        this.sendStatus.emit(false);
       }
-      this.sendStatus.emit(this.form.invalid);
+      
   }
   else
   {
-    this.sendStatus.emit(this.form.invalid);
+    this.sendStatus.emit(false);
   }
   }
 

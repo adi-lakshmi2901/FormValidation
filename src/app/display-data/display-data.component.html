@@ -1,10 +1,22 @@
-<h2>Successfully submitted data!</h2>
+<h1>Successfully submitted data!</h1>
 <!-- data collected in the form is displayed here -->
-<div class="display">
-    <div>First name: <span> {{data.firstName}}</span></div>
-    <div>Last name: <span>{{data.lastName}}</span></div>
-    <div>Username: <span>{{data.username}}</span></div>
-    <div>Age: <span>{{data.age}}</span></div>
-    <div>Email: <span>{{data.mail}}</span></div>
-    <div>Phone number:   <span>{{data.phone}}</span></div>
+<div class="details">
+    <!-- user details -->
+<div class="userDetails">
+    <h4>User Details:</h4>
+    <div>First name: <span> {{selectedUser.firstname}}</span></div>
+    <div>Last name: <span>{{selectedUser.lastname}}</span></div>
+    <div>Username: <span>{{selectedUser.username}}</span></div>
+    <div>Age: <span>{{selectedUser.age}}</span></div>
+    <div>Email: <span>{{selectedUser.mail}}</span></div>
+    <div>Phone number:   <span>{{selectedUser.phone}}</span></div>
+</div>
+<!-- additional info -->
+<div class="addInfo">
+    <h4>Additional Information:</h4>
+<div *ngFor="let info of addInfoValues ; index as i" >
+    <div>Label: {{addInfo[i]}}</div>
+    <div>Value: {{info}}</div>
+</div>
+</div>
 </div>

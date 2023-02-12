@@ -7,7 +7,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ColorComponentComponent } from './color-component/color-component.component';
 import { DisplayDataComponent } from './display-data/display-data.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
-
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

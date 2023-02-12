@@ -10,9 +10,9 @@
             <option [value]="'binary'">Binary</option>
     </select>
     <!-- input field for additional data value -->
-    <input type="text" formControlName="addInfo"/>
+    <input type="text" formControlName="addInfo" (keyup.enter)="updateInfoValue()"/>
 </div>
     </form>
 
 <div *ngIf="showError" id="alert">Enter correct value of selected type</div>
-<button type="button" id="add" (click)="updateInfoValue()">+</button>
+

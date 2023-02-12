@@ -8,7 +8,7 @@
         
       <div class="inputs">
         <label>First Name:</label>
-      <input type="text" formControlName="firstName" placeholder="Enter FirstName"/>
+      <input type="text" formControlName="firstname" placeholder="Enter FirstName"/>
       </div>
       <!-- showing error for first name -->
       <div class="alert" *ngIf="Firstname && Firstname.errors?.['required'] && Firstname.touched">
@@ -25,7 +25,7 @@
         
       <div class="inputs">
         <label>Last Name:</label>
-      <input type="text" formControlName="lastName" placeholder="Enter LastName"/>
+      <input type="text" formControlName="lastname" placeholder="Enter LastName"/>
       </div>
   
       <!-- showing error for last name -->
@@ -61,6 +61,9 @@
       <div class="alert" *ngIf="Age && Age.errors?.['required'] && Age.touched">
         Enter Age
       </div>
+      <div class="alert" *ngIf="Age && Age.errors?.['min']">
+        Enter age above 0
+      </div>
       <div class="alert" *ngIf="Age && Age.errors?.['max']">
         Enter age below 1000
       </div>
@@ -80,38 +83,40 @@
         <label>Phone No:</label>
       <input type="text" formControlName="phone" placeholder="Enter Phone Number"/>
       </div>
-  
       <!-- showing error for phone number -->
       <div class="alert" *ngIf="Phoneno && Phoneno.invalid && (Phoneno.dirty || Phoneno.touched)">Enter valid phone number</div>
       <!-- additional information -->
-      
-      <div class="inputs add-info">
-        <label>Additional Information:</label>
-      <input type="text" formControlName="addInfo" placeholder="Additional Information" (input)="showAddInfoFun()"/>
-      </div>
       <br/>
-      <!-- comonent for additional information input -->
+      
+      
+      <!-- component for additional information input -->
+      <div class="component-input">
+        
+        <label>Additional Information:</label>
+      <input #addInfoInput type="text" formControlName="addInfo" placeholder="Additional Information" (input)="showAddInfoFun()" [(ngModel)]="addInfoLabel"/>
+      </div>
+      <div *ngFor="let i of indexArr" class="component">
+      <div class="add-info-component">
       <app-color-component *ngIf="showAddInfoComponent" (sendStatus)="checkStatus($event)" (sendInfo)="handleInfo($event)"></app-color-component>
      
-      <br/>
-      <!-- print additional information -->
-      <div class="add-info" *ngIf="showAddInfo">
-        <div>Additional Information:</div><br/>
-        <div *ngFor="let item of addInfoValue ; let i =index">
-        <!-- <div>Label: {{add_Info[item.key]}}</div> -->
-        <!-- <div>Value: {{item.value}}</div><br/> -->
-        <div>Label :{{add_Info[i]}}</div>
-        <div>Value :{{addInfoValue[i]}}</div><br/>
-    </div>
-        </div>
      
-      
+      <!-- print additional information -->
+      <div class="add-info" *ngIf="addInfoStatus">
+        <!-- <div>Additional Information:</div> -->
+        <div>Label :{{add_Info[i]}}</div>
+        <div>Value :{{addInfoValue[i]}}</div>
+        </div>
+      </div>
+    </div>
+      <!-- button to add another component -->
+      <button type="button" id="add" (click)="updateIndex()"  *ngIf="showAddInfoComponent">+</button>
       <!-- buttons for submit and reset  -->
       <div class="buttons">
         
       <button type="reset">Reset</button>
-      <button type="Submit" [disabled]="form.invalid && !addInfoStatus">Submit</button>
-      
+      <button type="Submit" [disabled]="form.invalid &&  !addInfoCountFlag">Submit</button>
+      <div *ngIf="!addInfoCountFlag && addInfoCount" class="alert">Minimum three additional data's should enter.</div>
+      <div *ngIf="!addInfoCountFlag && addInfoCount" class="alert">click + to add</div>
       </div>
       
     
