@@ -8,7 +8,8 @@ import { ColorComponentComponent } from './color-component/color-component.compo
 import { DisplayDataComponent } from './display-data/display-data.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { AgGridModule } from 'ag-grid-angular';
+//  import { AgGridModule } from 'ag-grid-angular/lib/ag-grid-angular.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AgGridModule,
+    // AgGridModule.withComponents([])
   ],
   providers: [],
   bootstrap: [AppComponent]

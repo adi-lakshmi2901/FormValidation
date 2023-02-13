@@ -40,9 +40,11 @@ export class RegisterUserComponent {
     
     console.log(this.form);
     this.submitteddata=this.form.value;
+    // routing to display
     this.router.navigate(['display-data'],{
       state: { addInfos: this.add_Info, addInfoValues: this.addInfoValue}
     })
+    // post method call subscribe
     this.UserRegister.saveUserDetails(this.submitteddata).subscribe((data)=>console.warn(data))
    
   }
@@ -57,15 +59,18 @@ export class RegisterUserComponent {
     
     
   }
-  // tO get the additional information label from form
+  // Function is
+  // tO get the additional information label from form and
   // to get additional information value from common component
   handleInfo(event:any){
-    // console.log("info: ",arr);
+    // pushing additional info labels to add_Info
     this.add_Info.push(this.form.value.addInfo as string);
+    // pushing additional info values to addInfoValue
     this.addInfoValue.push(event[event.length-1]);
-    console.log("info done:",this.addInfoValue);
-    console.log("array: ",this.add_Info);
+    // console.log("info done:",this.addInfoValue);
+    // console.log("array: ",this.add_Info);
     this.addInfoCount=this.addInfoCount+1;
+    // condition for minimum 3 adiitional informations to be entered
     if(this.addInfoCount>=3){
       this.addInfoCountFlag=true;
     }
@@ -73,20 +78,23 @@ export class RegisterUserComponent {
       this.addInfoCountFlag=false;
     }
     this.addInfoLabel='';
+    // To focus out from input label so that label can be entered for next additional info
     if(this.addInfoInput){
       this.addInfoInput.nativeElement.blur();
 
     }
     
-    // console.log("existed: ",this.a);
+   
     
   }
-  
+  // updating index array for every common-component adding with +
+  // to iterate the component that many times
   updateIndex(){
     this.indexArr.push(this.count+1);
     this.count=this.count+1;
     console.log("add button clicked: ",this.indexArr);
   }
+
   get Firstname() {
     return this.form.get("firstname") ;
   }

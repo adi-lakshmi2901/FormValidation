@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserRegistrationService {
-
+  url:string='http://localhost:3000/users';
   constructor(private http : HttpClient) { }
   saveUserDetails(data:any){
-    return this.http.post('http://localhost:3000/users',data);
+    return this.http.post(this.url,data);
   }
   getUserDetails():Observable<IUser[]>{
-    return this.http.get<IUser[]>('http://localhost:3000/users');
+    return this.http.get<IUser[]>(this.url);
   }
 }
+
